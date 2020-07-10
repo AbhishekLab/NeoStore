@@ -1,11 +1,9 @@
 import 'dart:convert';
-
-import 'package:neostore/db/Preference_utils .dart';
 import 'package:neostore/network/ApiHelper.dart';
 import 'package:neostore/contract/LoginContract.dart';
 import 'package:neostore/model/login_model.dart';
 
-class LoginPresenter extends Presenter {
+class LoginPresenter extends LPresenter {
   LoginView view;
 
   LoginPresenter(LoginView view) {
@@ -17,7 +15,7 @@ class LoginPresenter extends Presenter {
     if (email.isNotEmpty && password.isNotEmpty) {
       var loginRequestData = LoginRequest.generateMap();
 
-      getResponse(loginRequestData).then((onValue) {
+      getPostResponse(loginRequestData).then((onValue) {
         print(json.decode(onValue.toString()));
 
         switch (onValue.statusCode) {

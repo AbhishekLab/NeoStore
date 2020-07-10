@@ -1,5 +1,5 @@
 
-abstract class Presenter{
+abstract class LPresenter{
   void login(String email, String password);
 }
 

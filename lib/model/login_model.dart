@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'dart:io';
 
 class LoginRequest {
   String email;
@@ -16,13 +15,6 @@ class LoginRequest {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['email'] = this.email;
     data['password'] = this.password;
-    return data;
-  }
-
-  static Map<dynamic, dynamic> toMap(String email, String password) {
-    final data = Map<dynamic, dynamic>();
-    data['email'] = email;
-    data['password'] = password;
     return data;
   }
 

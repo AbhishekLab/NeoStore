@@ -13,12 +13,29 @@ Future registerUser(String firstName, String lastName, String email,
   return convertedData;*/
 }
 
-Future<Response> getResponse(FormData loginRequestData) async {
+Future<Response> getPostResponse(FormData fromData) async {
   var dio = Dio();
   try {
     var response = await dio.post(baseUrl,
-        data: loginRequestData, options: Options(headers: headers()));
+        data: fromData, options: Options(headers: headers()));
 
+    return response;
+  } on DioError catch (error) {
+    return error.response;
+  }
+}
+
+Future<Response> getResponse(Map data) async {
+  var dio = Dio();
+  try {
+    var response = await dio.get(baseUrl,
+        queryParameters: {
+          "product_category_id": "1",
+          "limit": "10",
+          "page": "1",
+        }, options: Options(headers: headers()));
+
+    print(response);
     return response;
   } on DioError catch (error) {
     return error.response;
